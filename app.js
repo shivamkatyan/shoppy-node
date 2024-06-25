@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {
-  User.findById("5bab316ce0a7c75f783cb8a8")
+  User.findById("667a6aba85730d152c6cd192")
     .then((user) => {
       req.user = user;
       next();
@@ -34,7 +34,7 @@ app.use(errorController.get404);
 
 mongoose
   .connect(
-    "mongodb+srv://shoppy:W4t7TvOTa3y9Bzv9@shoppy.srreepn.mongodb.net/?retryWrites=true&w=majority&appName=shoppy",
+    "mongodb+srv://shoppy:W4t7TvOTa3y9Bzv9@shoppy.srreepn.mongodb.net/shoppy?retryWrites=true&w=majority&appName=shoppy",
     { useNewUrlParser: true }
   )
   .then((result) => {
