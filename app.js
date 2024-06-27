@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require('path');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -8,11 +8,11 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
 const flash = require('connect-flash');
 
-const errorController = require("./controllers/error");
-const User = require("./models/user");
+const errorController = require('./controllers/error');
+const User = require('./models/user');
 
 const MONGODB_URI =
-  "mongodb+srv://shoppy:W4t7TvOTa3y9Bzv9@shoppy.srreepn.mongodb.net/shoppy";
+  'mongodb+srv://maximilian:9u4biljMQc4jjqbe@cluster0-ntrwp.mongodb.net/shop';
 
 const app = express();
 const store = new MongoDBStore({
@@ -21,8 +21,8 @@ const store = new MongoDBStore({
 });
 const csrfProtection = csrf();
 
-app.set("view engine", "ejs");
-app.set("views", "views");
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
@@ -50,7 +50,7 @@ app.use((req, res, next) => {
       req.user = user;
       next();
     })
-    .catch((err) => console.log(err));
+    .catch(err => console.log(err));
 });
 
 app.use((req, res, next) => {
@@ -59,7 +59,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/admin", adminRoutes);
+app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 app.use(authRoutes);
 
@@ -70,6 +70,6 @@ mongoose
   .then(result => {
     app.listen(3000);
   })
-  .catch((err) => {
+  .catch(err => {
     console.log(err);
   });
